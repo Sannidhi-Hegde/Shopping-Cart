@@ -1,0 +1,17 @@
+.nav-body{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    justify-content:space-between;
+    align-items: center;
+    background-color: rgb(7, 180, 224);
+}
+.myshop{
+    padding-left: 20px;
+
+}
+.mycart{
+    padding-right: 50px;
+    font-size: x-large;
+}
