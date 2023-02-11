@@ -12,7 +12,7 @@ const ProductList = () => {
     useEffect(()=>{
         fetchData();
     },[])
-    console.log(items)
+    // console.log(items)
     
   return (
     <section className='product-list'>
