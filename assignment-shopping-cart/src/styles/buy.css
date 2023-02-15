@@ -1,0 +1,37 @@
+.buyitem{
+    border: 2px solid;
+    margin: 150px;
+    justify-content: space-between;
+    display:block;
+    
+    
+}
+.img-box{
+    height: 140px;
+    margin: 50px;
+    position: fixed;
+
+}
+.img{
+    height: 180px;
+    
+}
+.buydetails{
+    padding: 60px;
+    background-color: azure;
+    
+}
+
+.pay-btn{
+    background-color: green;
+    color: white;
+    width: 80px;
+    height: 30px;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.payfile{
+    margin: 150px;
+
+}
