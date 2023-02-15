@@ -20,8 +20,8 @@ const ProductCard = ({item,clickHandler}) => {
           <Rating value={rating.rate} />
           <br></br>
           <h2 className='price'>${price}</h2>
-          <br></br>
-          <p className='description'>{description}</p>
+          
+          {/* <p className='description'>{description}</p> */}
           <br></br>
           <h4>Qty:{rating.count}</h4>
       </div>
