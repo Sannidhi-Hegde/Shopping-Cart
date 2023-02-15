@@ -49,9 +49,9 @@ const Cart = ({cart,setCart,qty,setQty}) => {
                             </div>
                         </div>
                         <div>
-                            <button onClick={()=>handleQty(item,-1)} className='qty1'>-</button>
-                            <button className='qty2'>{qty[item.id]}</button>
-                            <button onClick={()=>handleQty(item,1)} className='qty3'>+</button>
+                            <button onClick={()=>handleQty(item,-1)} className='qty1'><h3>-</h3></button>
+                            <button className='qty2'><h3>{qty[item.id]}</h3></button>
+                            <button onClick={()=>handleQty(item,1)} className='qty3'><h3>+</h3></button>
                         </div>
                         <div>
                             <div>
