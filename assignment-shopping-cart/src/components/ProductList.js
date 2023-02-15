@@ -4,7 +4,7 @@ import ProductCard from './ProductCard'
 import '../styles/products.css'
 
 const ProductList = ({clickHandler}) => {
-    const [items,setItems]=useState([])
+    const [items,setItems]=useState(JSON.parse(localStorage.getItem("dataItem")||"[]"))
 
     const fetchData=()=>{
         return axios.get("https://fakestoreapi.com/products")
@@ -13,6 +13,10 @@ const ProductList = ({clickHandler}) => {
     useEffect(()=>{
         fetchData();
     },[])
+    useEffect(()=>{
+        localStorage.setItem("dataItem",JSON.stringify(items))
+    },[items])
+    
     
   return (
     <section className='product-list'>
