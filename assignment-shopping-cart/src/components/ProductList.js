@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import ProductCard from './ProductCard'
 import '../styles/products.css'
-import list from '../data.js'
 
 const ProductList = ({clickHandler}) => {
     const [items,setItems]=useState([])
