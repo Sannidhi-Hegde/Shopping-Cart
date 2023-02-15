@@ -1,46 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/cart.css'
-import data from './Qtylist'
 
 const Cart = ({cart,setCart,qty,setQty}) => {
     const [price,setPrice]=useState(0)
     
-    // const data={
-    
-    //     "1":1,
-    //     "2":1,
-    //     "3":1,
-    //     "4":1,
-    //     "5":1,
-    //     "6":1,
-    //     "7":1,
-    //     "8":1,
-    //     "9":1,
-    //     "10":1,
-    //     "11":1,
-    //     "12":1,
-    //     "13":1,
-    //     "14":1,
-    //     "15":1,
-    //     "16":1,
-    //     "17":1,
-    //     "18":1,
-    //     "19":1,
-    //     "20":1,
-    // }
-    
     const handlePrice=()=>{
         let ans=0.00
-        cart.map((item)=>{
+        cart.map((item)=>(
             ans+=qty[item.id]*item.price
-        })
+        ))
         setPrice(ans.toFixed(2))
     }
     useEffect(()=>{
         handlePrice()
     })
+
     const handleRemove=(id)=>{
-        const arr=cart.filter((item)=>item.id!=id)
+        const arr=cart.filter((item)=>item.id!==id)
         setCart(arr)
         qty[id]=1
         setQty({...qty})
@@ -57,7 +33,6 @@ const Cart = ({cart,setCart,qty,setQty}) => {
             }
         })  
         setQty({...qty})
-        // console.log(qty)
     }
     
   return (
