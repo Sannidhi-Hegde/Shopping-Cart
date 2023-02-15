@@ -42,7 +42,21 @@
     padding: 10px;
     border-radius: 0.8rem;
     cursor: pointer;
-    width: 50%;
+    width: 40%;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+.buy-btn{
+    background-color: rgb(224, 125, 38);
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    width: 40%;
+    justify-content: space-between;
+    
+
 }
 
 
