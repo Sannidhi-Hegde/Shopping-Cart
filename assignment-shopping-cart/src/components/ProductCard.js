@@ -1,10 +1,18 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/products.css'
+import Buy from './Buy'
 import Rating from './Rating'
 
 const ProductCard = ({item,clickHandler}) => {
   
     const {id,title,price,description,category,image,rating}=item
+    const navigate=useNavigate()
+    const buyHandler=(item)=>{
+      let path=`/buy/${item.id}`
+      navigate(path)
+      
+    }
     
   return (
     <div className="cards">
@@ -28,6 +36,8 @@ const ProductCard = ({item,clickHandler}) => {
       <br></br>
       <div className='btn1'>
         <button className='add-btn' onClick={()=>clickHandler(item)}>ADD TO CART</button>
+        <button className='buy-btn' onClick={()=>buyHandler(item)}>BUY NOW</button>
+
       </div>
     
   </div>
