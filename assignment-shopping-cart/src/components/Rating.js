@@ -1,12 +1,11 @@
 import React from 'react'
-import { v4 as uuidv4} from 'uuid'
 
 const Rating = ({value,color}) => {
   return (
     <div>
-        {[1,2,3,4,5].map((rate)=>(
-            <span key={uuidv4()}>
-                <i style={{color}} className={
+        {[1,2,3,4,5].map((rate,index)=>(
+            
+                <i key={index} style={{color}} className={
                     value+1===rate+0.5
                     ? 'fas fa-star-half-alt'
                     :value>=rate
@@ -17,7 +16,6 @@ const Rating = ({value,color}) => {
                 }>
 
                 </i>
-            </span>
 
         )
         )}
@@ -25,7 +23,7 @@ const Rating = ({value,color}) => {
   )
 }
 Rating.defaultProps={
-    color:"#FFA41C",
+    color:"orange",
 };
 
 export default Rating
