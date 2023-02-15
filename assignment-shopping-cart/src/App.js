@@ -3,27 +3,27 @@ import './App.css';
 
 import Header from './components/Header';
 import ProductList from './components/ProductList';
-import {BrowserRouter, Route, Router, Routes} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
 import { useEffect, useState } from 'react';
 import Cart from './components/Cart';
-import data from './components/Qtylist'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import data from './components/Qtylist';
+import Buy from './components/Buy';
+import Pay from './components/Pay';
 
-//toast.configure()
+
 
 function App() {
   const [qty,setQty]=useState(JSON.parse(localStorage.getItem('dataQty')||localStorage.setItem('dataQty',JSON.stringify(data))))
   useEffect(()=>{
     localStorage.setItem('dataQty',JSON.stringify(qty))
   },[qty])
-  const notify=()=>{
-    toast("item added")
-  }
+  
+  
   const [cart,setCart]=useState(JSON.parse(localStorage.getItem('dataKey')||"[]"))
   const [show,setShow]=useState(false)
-  //console.log(qty)
+  let x;
   const clickHandler=(item)=>{
+    x=item
     let isPresent=false;
     cart.forEach((product)=>{
       if(item.id === product.id){
@@ -44,15 +44,13 @@ function App() {
       },2000)
       setCart([...cart,item])
 
-    }
-    
-    
-    
+    } 
   }
-  //console.log(cart)
+  
   useEffect(()=>{
     localStorage.setItem('dataKey',JSON.stringify(cart))
   },[cart])
+
   return (
     <div className="App">
       
@@ -61,16 +59,14 @@ function App() {
         <Routes>
           <Route path="/" element={<ProductList clickHandler={clickHandler} />} />
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} qty={qty} setQty={setQty}/>} />
+          <Route path="/buy/:uid" element={<Buy />} />
+          <Route path="/pay" element={<Pay />} />
+          
         </Routes>
         {
           show && <div className="show">Added to Cart successfully</div>
-        }
-          
-        
-      </BrowserRouter>
-      
-      
-      
+        } 
+      </BrowserRouter> 
     </div>
   );
 }
