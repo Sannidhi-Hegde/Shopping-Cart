@@ -80,15 +80,16 @@ const Cart = ({cart,setCart,qty,setQty}) => {
                         </div>
                         <div>
                             <div>
-                                <span><h3>${item.price}</h3></span>
+                                <span><h2>${item.price}</h2></span>
                             </div>
-                            <button className="remove" onClick={()=>handleRemove(item.id)}><span><i className='fas fa-trash' aria-hidden="true"></i></span></button>
+                            <br></br>
+                            <span className="remove" onClick={()=>handleRemove(item.id)}><i className='fas fa-trash' aria-hidden="true"></i></span>
                         </div>
                     </div>
             ))
         }
         <div className='total'>
-            <span>Total price of cart</span>
+            <span><h3>Total price of cart</h3></span>
             <h2>$ {price}</h2>
         </div>
     </article>
