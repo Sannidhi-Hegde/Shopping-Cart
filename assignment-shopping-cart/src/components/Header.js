@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/header.css'
 
+
 const Header = ({size}) => {
   const navigate=useNavigate()
     const routeChange=()=>{
