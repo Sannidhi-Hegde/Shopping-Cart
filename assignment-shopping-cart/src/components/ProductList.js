@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import ProductCard from './ProductCard'
 import '../styles/products.css'
+import list from '../data.js'
 
-const ProductList = () => {
+const ProductList = ({clickHandler}) => {
     const [items,setItems]=useState([])
+
     const fetchData=()=>{
         return axios.get("https://fakestoreapi.com/products")
         .then((response)=>setItems(response.data))
@@ -12,23 +14,14 @@ const ProductList = () => {
     useEffect(()=>{
         fetchData();
     },[])
-    // console.log(items)
     
   return (
     <section className='product-list'>
         {
-            items.map((item,index)=>{
-                return(
-                    
-                        <ProductCard key={item.id} item={item}/>
-                   
-
-                )
-                
-                
-            })
+            items.map((item,index)=>(
+                <ProductCard key={item.id} item={item} clickHandler={clickHandler}/>
+            ))
         }
-        
     </section>
   )
 }
