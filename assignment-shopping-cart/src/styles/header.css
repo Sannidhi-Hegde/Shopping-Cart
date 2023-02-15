@@ -1,17 +1,27 @@
 .nav-body{
-    width: 80%;
+    width: 90%;
+    height: 100px;
     margin: auto;
+    margin-bottom: 50px;
     display: flex;
     text-align: center;
     justify-content:space-between;
     align-items: center;
-    background-color: rgb(7, 180, 224);
+    background-color: rgb(3, 45, 92);
+    position: fixed;
+    top: 0;
+    left: 5%;
+    
 }
 .myshop{
     padding-left: 20px;
+    color: white;
+    font-family: Verdana;
 
 }
 .mycart{
     padding-right: 50px;
     font-size: x-large;
+    color: white;
+    cursor: pointer;
 }
