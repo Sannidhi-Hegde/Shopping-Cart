@@ -5,6 +5,7 @@ import '../styles/products.css'
 
 const ProductList = ({clickHandler}) => {
     const [items,setItems]=useState(JSON.parse(localStorage.getItem("dataItem")||"[]"))
+    
 
     const fetchData=()=>{
         return axios.get("https://fakestoreapi.com/products")
@@ -18,10 +19,11 @@ const ProductList = ({clickHandler}) => {
     },[items])
     
     
+    
   return (
     <section className='product-list'>
         {
-            items.map((item,index)=>(
+            items.map((item)=>(
                 <ProductCard key={item.id} item={item} clickHandler={clickHandler}/>
             ))
         }
