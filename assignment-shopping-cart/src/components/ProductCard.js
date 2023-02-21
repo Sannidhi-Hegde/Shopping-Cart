@@ -17,7 +17,7 @@ const ProductCard = ({item,clickHandler}) => {
   return (
     <div className="cards">
       <div className="image-box">
-          <img className='img' src={image} alt="Image" />  
+          <img className='img' src={image} alt="icon" />  
       </div>
       <br></br>
       <div className="details">
