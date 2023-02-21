@@ -1,3 +1,4 @@
+
 const data={
     
     "1":1,
@@ -21,3 +22,5 @@ const data={
     "19":1,
     "20":1,
 }
+
+export default data
