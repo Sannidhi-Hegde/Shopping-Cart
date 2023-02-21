@@ -1,72 +1,93 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-import Header from './components/Header';
-import ProductList from './components/ProductList';
-import {BrowserRouter, Route, Routes} from "react-router-dom"
-import { useEffect, useState } from 'react';
-import Cart from './components/Cart';
-import data from './components/Qtylist';
-import Buy from './components/Buy';
-import Pay from './components/Pay';
+import Header from "./components/Header";
+import ProductList from "./components/ProductList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import Cart from "./components/Cart";
+import data from "./components/Qtylist";
+import Buy from "./components/Buy";
+import Pay from "./components/Pay";
 
 
 
 function App() {
-  const [qty,setQty]=useState(JSON.parse(localStorage.getItem('dataQty')||localStorage.setItem('dataQty',JSON.stringify(data))))
-  useEffect(()=>{
-    localStorage.setItem('dataQty',JSON.stringify(qty))
-  },[qty])
-  
-  
-  const [cart,setCart]=useState(JSON.parse(localStorage.getItem('dataKey')||"[]"))
-  const [show,setShow]=useState(false)
-  let x;
-  const clickHandler=(item)=>{
-    x=item
-    let isPresent=false;
-    cart.forEach((product)=>{
-      if(item.id === product.id){
-        isPresent=true
+
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("dataKey") || "[]")
+  );
+
+  const [show, setShow] = useState(false);
+  const [qty, setQty] = useState(
+    JSON.parse(
+      localStorage.getItem("dataQty") ||
+        localStorage.setItem("dataQty", JSON.stringify(data)) ||
+        "[]"
+    )
+  );
+  useEffect(() => {
+    localStorage.setItem("dataQty", JSON.stringify(qty));
+  }, [qty]);
+
+  const clickHandler = (item) => {
+    let isPresent = false;
+    cart.forEach((product) => {
+      if (item.id === product.id) {
+        isPresent = true;
       }
-      
-    })
-    if(isPresent){
-      qty[item.id]+=1
-      setQty({...qty})
-      return
+    });
+    if (isPresent) {
+      qty[item.id] += 1;
+      setQty({ ...qty });
+      return;
+    } else {
+      setShow(true);
+      /**Added to cart message */
+      setTimeout(() => {
+        setShow(false);
+      }, 2000);
+      setCart([...cart, item]);
     }
-    else{
-      
-      setShow(true)
-      setTimeout(()=>{
-        setShow(false)
-      },2000)
-      setCart([...cart,item])
+  };
 
-    } 
-  }
-  
-  useEffect(()=>{
-    localStorage.setItem('dataKey',JSON.stringify(cart))
-  },[cart])
+  useEffect(() => {
+    localStorage.setItem("dataKey", JSON.stringify(cart));
+  }, [cart]);
 
+  const addHeader = (Comp) => {
+    return (
+      <>
+        <Header size={cart.length} />
+        {Comp}
+      </>
+    );
+  };
   return (
-    <div className="App">
+    
+    <div className="App"> 
       
       <BrowserRouter>
-        <Header size={cart.length}/>
+        {/* {
+        !window.location.pathname.includes("/pay") ? <Header size={cart.length}/> : ""
+      } */}
+        {/* <Header size={cart.length}/> */}
         <Routes>
-          <Route path="/" element={<ProductList clickHandler={clickHandler} />} />
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} qty={qty} setQty={setQty}/>} />
-          <Route path="/buy/:uid" element={<Buy />} />
+          <Route
+            path="/"
+            element={addHeader(<ProductList clickHandler={clickHandler} />)}
+          />
+          <Route
+            path="/cart"
+            element={addHeader(
+              <Cart cart={cart} setCart={setCart} qty={qty} setQty={setQty} />
+            )}
+          />
+          <Route path="/buy/:uid" element={addHeader(<Buy />)} />
           <Route path="/pay" element={<Pay />} />
-          
         </Routes>
-        {
-          show && <div className="show">Added to Cart successfully</div>
-        } 
-      </BrowserRouter> 
+        {show && <div className="show">Added to Cart successfully</div>}
+      </BrowserRouter>
     </div>
   );
 }
